@@ -269,6 +269,7 @@ $(function(){
         $("#datoDescripciónAnimal").val(descripcionDatos);
 
     })
+    
     $("#pdfbt").on("click", function(){
         const idPertenese = $("#pdfbt").val();        
         var objData =new FormData();
