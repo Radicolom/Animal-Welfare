@@ -1,0 +1,70 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nave{
+    width: 80px;
+    height: 80px;
+    background-image: url('../img/nave.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:absolute;
+    bottom: 50px;
+    left: calc(50vw - 40px);  /*Calculo mitad del ancho total de la ventana del navegador menos la mitad de lo que mide la nave*/
+}
+
+body{
+    background-image: url('../img/fondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+}
+
+.bala{
+    width: 10px;
+    height: 50px;
+    background-color: #8EE4E3;
+    border-radius: 15px;
+    box-shadow: 0px 0px 40px 10px #62F8F6; /* que no se desplase ni H ni V con un tamaño 40 px 10 px... agregar una sobra*/
+    position: absolute;/*Para que se muevan en cualquier parte,,,,,,, se creo el disparo en una esquina*/
+}
+
+.enemigo{
+    width: 80px;
+    height: 70px;
+    background-image: url('../img/roca.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top:0;
+}
+
+#lives{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 2em;
+    color:white;
+}
+
+#times{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    color: white;
+}
+
+#pounts
+{
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    font-size: 2em;
+    color: white;
+}
