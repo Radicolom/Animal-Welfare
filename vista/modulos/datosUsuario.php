@@ -1,7 +1,6 @@
 <script src='vista/js/usuario.js'></script>
 
 <div class="col" id="contenedorDatosUsuario">
-<!-- style="display: none;" -->
     <br>
     <br>
     <br>

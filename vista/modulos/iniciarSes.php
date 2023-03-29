@@ -19,11 +19,6 @@
                             <input type="password" class="form-control" id="pwdIngreso" placeholder="Enter password" name="pswd">
                             <span style="color:red; display:none;">Este campo es obligatorio.</span>
                         </div>
-                        <!-- <div class="form-check mb-3">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                            </label>
-                        </div> -->
                         <button type="submit" style="color:aliceblue;" class="btn">Ingresar</button>
                         <button  type="button" id="modalRegistroBtn" Style="color:aliceblue;" class="btn">Registrarme</button>
                     </form>
@@ -77,7 +72,7 @@
                             </div>
                             <div class="col">
                                 <div class="mb-3 mt-3">
-                                    <label for="text" class="form-label">Ciuadad:</label>
+                                    <label for="text" class="form-label">Ciudad:</label>
                                     <input type="text" list="listaCiuadad" name="browser" class="form-control" placeholder="Escriba la ciudad" id="ciudadRegistro">
                                     <span style="color:red; display:none;">Este campo es obligatorio.</span>
                                     <datalist id="listaCiuadad">

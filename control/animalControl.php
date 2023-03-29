@@ -57,7 +57,6 @@ class ctrGuardarDatosAnimal{
 
     public function ctrGuardarAnimal(){
         $objRespuesta=mdlGuardarAnimal::mdlGuardarAnimal($this->animalIdUsuario,$this->nombreAnimal, $this->imagenAnimal, $this->SexoAnimal, $this->EdadAnimal, $this->especieRegistro, $this->razaRegistro, $this->descripcionRegistro);
-        // $this->ctrGuardarDatosDoc();
         echo json_encode($objRespuesta);
     }
     public function ctrGuardarDatosDoc(){
@@ -69,7 +68,7 @@ class ctrGuardarDatosAnimal{
             $objRespuesta=mdlAnimal::mdlListarAnimal();
             $respuesta = array();
             foreach ($objRespuesta as $animal) {
-                if ($animal['usuario_Id_Formato'] == $_SESSION["usuarioCom"]) {
+                if ($animal['usuario_Id_formato'] == $_SESSION["usuarioCom"]) {
                     $imagen = base64_encode($animal['imagenAnimal']);
                     $respuesta[] = array(
                         'imagen' => $imagen,
@@ -81,7 +80,7 @@ class ctrGuardarDatosAnimal{
                         'raza' => $animal['nombreRaza'],
                         'ciudad' => $animal['nombreCiudad'],
                         'departamento' => $animal['nombreDepartamento'],
-                        'descripcion' => $animal['descripcion'],
+                        'descripcion' => $animal['descripcion']
                     );
                 }
 
@@ -94,9 +93,9 @@ if(isset($_POST["listarAnimalUpp"]) && $_POST["listarAnimalUpp"] == "ok"){
     $objAnimal = new ctrGuardarDatosAnimal();
     $objAnimal->listarAnimalUpp();
 }
-if(isset($_POST["idPertenese"],$_POST["nombreAnimal"],$_FILES["imagenAnimal"],$_POST["SexoAnimal"],$_POST["EdadAnimal"],$_POST["especieRegistro"],$_POST["razaRegistro"],$_POST["descripcionRegistro"])){
+if(isset($_POST["nombreAnimal"],$_FILES["imagenAnimal"],$_POST["SexoAnimal"],$_POST["EdadAnimal"],$_POST["especieRegistro"],$_POST["razaRegistro"],$_POST["descripcionRegistro"])){
     $objRespuesta = new ctrGuardarDatosAnimal();
-    $objRespuesta->animalIdUsuario = $_POST["idPertenese"];
+    $objRespuesta->animalIdUsuario = $_SESSION["usuarioCom"];
     $objRespuesta->nombreAnimal = $_POST["nombreAnimal"];
     $objRespuesta->imagenAnimal = file_get_contents($_FILES["imagenAnimal"]['tmp_name']);
     $objRespuesta->SexoAnimal = $_POST["SexoAnimal"];
@@ -112,15 +111,51 @@ class ctrDatosAnimal{
     public $objRespuesta;
 
     public function ctrDatos(){
-        $objRespuesta=mdlDatosAnimal::mdlLDatosArchivo($this->nesDatosArchivo);
-        echo json_encode($objRespuesta);
+        $objRespuesta=mdlDatosAnimal::mdlLDatosArchivo($this->nesDatosAnimal);
+        $respuesta = array();
+        foreach ($objRespuesta as $animal) {
+            if (empty($objRespuesta[1])) {
+                $imagen = base64_encode($animal['imagenAnimal']);
+                $respuesta[] = array(
+                    'imagen' => $imagen,
+                    'nombre' => $animal['nombre'],
+                    'apellido' => $animal['apellido'],
+                    'documento' => $animal['documento'],
+                    'nombreCiudad' => $animal['nombreCiudad'],
+                    'nombreDepartamento' => $animal['nombreDepartamento'],
+                    'nombreEspecie' => $animal['nombreEspecie'],
+                    'nombreRaza' => $animal['nombreRaza'],
+                    'nombreAnimal' => $animal['nombreAnimal']
+                );
+            } else {
+                $imagen = base64_encode($animal['imagenAnimal']);
+                $respuesta[] = array(
+                    'imagen' => $imagen,
+                    'nombre' => $objRespuesta[0]['nombre'],
+                    'apellido' => $objRespuesta[0]['apellido'],
+                    'documento' => $objRespuesta[0]['documento'],
+                    'nombreCiudad' => $objRespuesta[0]['nombreCiudad'],
+                    'nombreDepartamento' => $objRespuesta[0]['nombreDepartamento'],
+                    'nombreEspecie' => $objRespuesta[0]['nombreEspecie'],
+                    'nombreRaza' => $objRespuesta[0]['nombreRaza'],
+                    'nombreAnimal' => $objRespuesta[0]['nombreAnimal'],
+                    'nombre2' => $objRespuesta[1]['nombre'],
+                    'apellido2' => $objRespuesta[1]['apellido'],
+                    'documento2' => $objRespuesta[1]['documento'],
+                    'nombreCiudad2' => $objRespuesta[1]['nombreCiudad'],
+                    'nombreDepartamento2' => $objRespuesta[1]['nombreDepartamento']
+                );
+            }
+            break;
+        }
+        echo json_encode($respuesta);
     }
 
 }
 
 if(isset($_POST["nesDatosArchivo"]) && $_POST["nesDatosArchivo"] != ""){
     $objAnimal = new ctrDatosAnimal();
-    $objAnimal->nesDatosArchivo = $_POST["nesDatosArchivo"];
+    $objAnimal->nesDatosAnimal = $_POST["nesDatosArchivo"];
     $objAnimal->ctrDatos();
 }
 

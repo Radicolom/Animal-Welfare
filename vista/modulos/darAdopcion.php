@@ -127,44 +127,20 @@
                             <label for="text" class="form-label">Edad:</label>
                             <input type="text" class="form-control" id="datoEdadAnimal" name="datoEdadAnimal" disabled>
 
-                            <!-- <label for="text" class="form-label">Edad:</label>
-                            <select class="form-select" id="selectActualizaEdadAnimal">
-                                ARCHIVO
-                            </select>      -->
                         </div>
                     </div>
-                    <!-- <div class="col">
-                        <div class="mb-3 mt-3">
-                            <label for="text" class="form-label">Tiempo:</label>
-                            <select class="form-select" id="selectActualizaTiempo">
-                                ARCHIVO
-                            </select>     
-                        </div>
-                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="mb-3 mt-3">
                             <label for="text" class="form-label">Especie:</label>
                             <input type="text" class="form-control" id="datoEspecieAnimal" name="datoEspecieAnimal" disabled>
-
-                            <!-- <label for="text" class="form-label">Especie:</label>
-                            <input type="text" list="listaActualizaEspecie" name="browser" class="form-control" placeholder="Escriba la especie" id="especieRegistro">
-                            <datalist id="listaRegistroEspecie">
-                                ARCHIVO
-                            </datalist>     -->
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3 mt-3">
                             <label for="text" class="form-label">Raza:</label>
                             <input type="text" class="form-control" id="datoRazaAnimal" name="datoRazaAnimal" disabled>
-
-                            <!-- <label for="text" class="form-label">Raza:</label>
-                            <input type="text" list="listaActualizaRaza" name="browser" class="form-control" placeholder="Escriba la raza" id="razaRegistro">
-                            <datalist id="listaRegistroRaza">
-                                ARCHIVO
-                            </datalist>         -->
                         </div>
                     </div>
                 </div>
@@ -173,24 +149,12 @@
                         <div class="mb-3 mt-3">
                             <label for="text" class="form-label">Departamento:</label>
                             <input type="text" class="form-control" id="datoDepartamentoAnimal" name="datoDepartamentoAnimal" disabled>
-
-                            <!-- <label for="text" class="form-label">Especie:</label>
-                            <input type="text" list="listaActualizaEspecie" name="browser" class="form-control" placeholder="Escriba la especie" id="especieRegistro">
-                            <datalist id="listaRegistroEspecie">
-                                ARCHIVO
-                            </datalist>     -->
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3 mt-3">
                             <label for="text" class="form-label">Ciudad:</label>
                             <input type="text" class="form-control" id="datoCiudadAnimal" name="datoCiudadAnimal" disabled>
-
-                            <!-- <label for="text" class="form-label">Raza:</label>
-                            <input type="text" list="listaActualizaRaza" name="browser" class="form-control" placeholder="Escriba la raza" id="razaRegistro">
-                            <datalist id="listaRegistroRaza">
-                                ARCHIVO
-                            </datalist>         -->
                         </div>
                     </div>
                 </div>
@@ -199,4 +163,44 @@
             </div>
         </div>             
     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <button class="btn btn-danger" id="btnpdf">pdf</button>
 </div>

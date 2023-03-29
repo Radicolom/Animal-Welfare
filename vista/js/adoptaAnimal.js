@@ -7,9 +7,9 @@ $(function(){
             window.location.href = "https://mail.google.com/mail/u/2/#inbox?compose=new";
         });
         //ENVIAR WHATSAPP
-        document.getElementById("whatsApp").addEventListener("click", function(){
-            window.location.href = "https://web.whatsapp.com/";
-        });
+        // document.getElementById("whatsApp").addEventListener("click", function(){
+        //     window.location.href = "https://web.whatsapp.com/";
+        // });
 
     function listarBusquedaAnimal(){
         document.getElementById("listaBusqueda").innerHTML = "";
@@ -86,6 +86,15 @@ $(function(){
             }
         })
     }
+    function redirigirAWhatsApp(numeroTelefono, mensaje) {
+        var enlace = "https://wa.me/" + numeroTelefono + "?text=" + encodeURIComponent(mensaje);
+        window.location.href = enlace;
+    }
+
+    function redirigirACorreoElectronico(direccionCorreo, asunto, cuerpo) {
+        var enlace = "mailto:" + direccionCorreo + "?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(cuerpo);
+        window.location.href = enlace;
+    }
 
     // FUNCIONES CONJUNTAS
 
@@ -113,7 +122,14 @@ $(function(){
     }
 
     // BTNS
-
+    $("#whatsApp").on("click", function(){
+        const nombre = $("#whatsApp").val()
+        redirigirAWhatsApp("573103316411", "¡Hola! Estoy interesado en darle un nuevo hogar a " + nombre + " donde le dare mucho cariño ");
+    });
+    $("#enviar-correo").on("click", function(){
+        const nombre = $("#whatsApp").val()
+        redirigirACorreoElectronico("info@miempresa.com", "Consulta sobre las adopciones", "¡Hola! Estoy interesado en darle un nuevo hogar a " + nombre + " donde le dare mucho cariño ");
+    });
     $("#NoFiltrar").on("click", function(){
         relistaAnimal();
         $("#btnSelecRaza").hide(200);
@@ -195,6 +211,7 @@ $(function(){
         $("#correoUsuarioDatos").val(correoDatos);
         $("#direccionUsuarioDatos").val(direccionDatos);
         $("#telefonoUsuarioDatos").val(tellDatos);
+        $("#whatsApp").val(nombreAnimalDatos);
     })
     $("#btnRegresar").on("click", function(){
         $("#contenedorDatosAnimal").hide();

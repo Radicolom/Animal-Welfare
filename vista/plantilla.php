@@ -6,7 +6,7 @@ include_once "modulos/menu.php";
 
 if(isset($_GET["ruta"])){
     if($_GET["ruta"] == "inicio" || $_GET["ruta"] == "adopta" || $_GET["ruta"] == "darAdopcion" || 
-    $_GET["ruta"] == "iniciarSes" || $_GET["ruta"] == "datosUsuario"){
+    $_GET["ruta"] == "iniciarSes" || $_GET["ruta"] == "datosUsuario" || $_GET["ruta"] == "actualizarDatos"){
 
         include_once "modulos/".$_GET["ruta"].".php";
     }else{

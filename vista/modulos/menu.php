@@ -7,13 +7,14 @@
                 Animal welfare
                 </H1>
         </div>
-            
         <div class="col">
             <a id="btnSelectInicio" class="btn btn-lg" href="inicio">Inicio</a>
             <a id="btnSelectAdopta" class="btn btn-lg" href="adopta">Adopta</a>
             <a id="btnSelectDarAdopcion" class="btn btn-lg" href="darAdopcion">Dar en adopción</a>
             <a id="btnSelectIniciarSesion" class="btn btn-lg" href="iniciarSes" style="display: none;">Iniciar Sesión</a>
             <a id="btnSelectSalir1" class="btn btn-lg" style="display: none;">Salir</a>
+            <a id="btnSelecAnimales" class="btn btn-lg" href="actualizarDatos" style="display: none;">⚙️</a>
+            <a id="btnPerfil" class="btn btn-lg" href="datosUsuario" style="display: none;">Perfil</a>
         </div>
     </div>
 </nav>

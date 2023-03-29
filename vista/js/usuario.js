@@ -4,20 +4,35 @@ $(function(){
     darDatos()
 
     function primerIngress(){
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })       
-        Toast.fire({
-        icon: 'success',
-        title: 'Ha iniciado sesión correctamente'
+        var objData =new FormData();
+        objData.append("primerIni","ok");
+        $.ajax({
+            url: "control/inicioControl.php",
+            type: "post",
+            dataType: "json",
+            data: objData,
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function(respuesta){
+            console.log(respuesta)
+            if(respuesta === "ok") {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })       
+                Toast.fire({
+                icon: 'success',
+                title: 'Ha iniciado sesión correctamente'
+                })
+            } 
         })
     }
 

@@ -8,7 +8,6 @@ ini_set('session.gc_maxlifetime', $maxLifetime); // Configura el tiempo máximo 
 
 session_start();
 $iniciadoSesion = false;
-$usuarioCom;
 
 class ctrUsuario{
     public $objRespuesta;
@@ -20,6 +19,10 @@ class ctrUsuario{
             foreach ($objRespuesta as $respuesta) {
                 $_SESSION["usuarioCom"] = $respuesta['idUsuario'];
                 $_SESSION["usuarioDad"] = $respuesta;
+                $_SESSION["primerInicio"] = 1;
+                if ($respuesta["rol_Id_Usuario"] == 2) {
+                    $_SESSION["admin"] = "esADMIN";  
+                }
                 break; // detener el bucle después de encontrar el primer idUsuario
             }
         }
@@ -32,12 +35,13 @@ class ctrUsuario{
     }
 
     public function ctrGuardarUsuario(){
-        $objRespuesta = mdlUsuario::mdlGuardarUsuario($this->nombreRegistro,$this->apellidoRegistro,$this->documentoRegistro,$this->direccionRegistro,$this->telefonoRegistro,$this->correoRegistro,$this->contrasenaRegistro);
+        $objRespuesta = mdlUsuario::mdlGuardarUsuario($this->nombreRegistro,$this->apellidoRegistro,$this->documentoRegistro,$this->telefonoRegistro,$this->correoRegistro,$this->contrasenaRegistro,$this->ciudadRegistro,$this->departamentoRegistro);
         echo json_encode($objRespuesta);
     }
 
     public function ctrCerrar(){
         $_SESSION["iniciadoSesion"] = false;
+        $_SESSION["admin"] = false;
         echo json_encode("ok");
     }
 
@@ -53,15 +57,16 @@ if(isset($_POST["listarBusquedaUbicacion"]) && $_POST["listarBusquedaUbicacion"]
     $objUsuario->ctrUbicacion();
 }
 
-if(isset($_POST["nombreReg"],$_POST["apellidoReg"],$_POST["documentoReg"],$_POST["direccionReg"],$_POST["telefonoReg"],$_POST["correoReg"],$_POST["contrasenaReg"])){
+if(isset($_POST["nombreReg"],$_POST["apellidoReg"],$_POST["documentoReg"],$_POST["telefonoReg"],$_POST["correoReg"],$_POST["contrasenaReg"],$_POST["ciudadReg"],$_POST["departamentoReg"])){
     $objUsuario = new ctrUsuario();
     $objUsuario->nombreRegistro = $_POST["nombreReg"];
     $objUsuario->apellidoRegistro = $_POST["apellidoReg"];
     $objUsuario->documentoRegistro = $_POST["documentoReg"];
-    $objUsuario->direccionRegistro = $_POST["direccionReg"];
     $objUsuario->telefonoRegistro = $_POST["telefonoReg"];
     $objUsuario->correoRegistro = $_POST["correoReg"];
     $objUsuario->contrasenaRegistro = $_POST["contrasenaReg"];
+    $objUsuario->ciudadRegistro = $_POST["ciudadReg"];
+    $objUsuario->departamentoRegistro = $_POST["departamentoReg"];
     $objUsuario->ctrGuardarUsuario();
 }
 
@@ -80,6 +85,13 @@ class ctrValidar{
         $objRespuesta = $_SESSION["iniciadoSesion"];
         echo json_encode($objRespuesta);
     }
+
+    public function ctrAdmin(){
+        if($_SESSION["admin"] == "esADMIN") {
+            $objRespuesta = "fuerzaMundial456";
+        }
+        echo json_encode($objRespuesta);
+    }
     
     public function ctrDataSear(){
         if (isset($_SESSION["usuarioDad"]) && is_array($_SESSION["usuarioDad"])) {
@@ -88,12 +100,20 @@ class ctrValidar{
         } else {
             echo json_encode(array("error" => "No se encontraron datos de usuario"));
         }
-        // $objRespuesta = $_SESSION["usuarioDad"];
-        // echo json_encode($objRespuesta);
     }
 
     public function ctrUsucarioCual(){
         $objRespuesta = $_SESSION["usuarioCom"];
+        echo json_encode($objRespuesta);
+    }
+
+    public function ctrUsucarioIni(){
+        if ($_SESSION["primerInicio"] === 1) {
+            $_SESSION["primerInicio"] = 2;
+            $objRespuesta="ok";
+        } else {
+            $objRespuesta=null;
+        };
         echo json_encode($objRespuesta);
     }
 }
@@ -101,6 +121,11 @@ class ctrValidar{
 if(isset($_POST["verificarIni"]) && $_POST["verificarIni"] == "ok"){
     $objAnimal = new ctrValidar();
     $objAnimal->ctrInicio();
+}
+
+if(isset($_POST["verificarAdmin"]) && $_POST["verificarAdmin"] == "ok"){
+    $objAnimal = new ctrValidar();
+    $objAnimal->ctrAdmin();
 }
 
 if(isset($_POST["datosUsuario"]) && $_POST["datosUsuario"] == "ok"){
@@ -113,5 +138,8 @@ if(isset($_POST["usarioCua"]) && $_POST["usarioCua"] == "ok"){
     $objAnimal->ctrUsucarioCual();
 }
 
-
+if(isset($_POST["primerIni"]) && $_POST["primerIni"] == "ok"){
+    $objAnimal = new ctrValidar();
+    $objAnimal->ctrUsucarioIni();
+}
 ?>

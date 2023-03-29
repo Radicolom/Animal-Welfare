@@ -3,7 +3,6 @@ $(function(){
     var max = 0;
     const formularioIngreso = document.getElementById("formularioIngreso");
     const formularioRes = document.getElementById("formularioRegistro"); // metodo para acceder html
-    // const soloNumeros =  document.getElementById("telefonoRegistro");
     
     listarUbicacion();
 
@@ -119,19 +118,20 @@ $(function(){
         const nombre = $("#nombreRegistro").val();
         const apellido = $("#apellidoRegistro").val();
         const documento = $("#documentoRegistro").val();
-        const direccion = $("#direccionRegistro").val();
-        const telefono = $("#telefonoRegistro").val();
         const correo = $("#correoRegistro").val();
+        const telefono = $("#telefonoRegistro").val();
         const contrasena = $("#contrasenaRegistro").val();
-
+        const ciudad = $("#ciudadRegistro").val();
+        const departamento = $("#departamentoRegistro").val();
         var objData =new FormData();
         objData.append("nombreReg",nombre);
         objData.append("apellidoReg",apellido);
         objData.append("documentoReg",documento);
-        objData.append("direccionReg",direccion);
         objData.append("telefonoReg",telefono);
         objData.append("correoReg",correo);
         objData.append("contrasenaReg",contrasena);
+        objData.append("ciudadReg",ciudad);
+        objData.append("departamentoReg",departamento);
         $.ajax({
             url: "control/inicioControl.php",
             type: "post",
@@ -141,11 +141,9 @@ $(function(){
             contentType: false,
             processData: false
         }).done(function(respuesta){
-
             if (respuesta !== "ok") {
                 console.log(respuesta);
             } else {
-
             $("#nombreRegistro").val("");
             $("#apellidoRegistro").val("");
             $("#documentoRegistro").val("");
@@ -155,10 +153,9 @@ $(function(){
             $("#correoRegistro").val("");
             $("#contrasenaRegistro").val("");
             $("#contraseñaRegistro2").val("");
-        
             Swal.fire({
                 icon: 'success',
-                title: 'Tu trabajo ha sido guardado',
+                title: 'Te has registrado corectamente',
                 showConfirmButton: false,
                 timer: 1500
             })
@@ -166,7 +163,6 @@ $(function(){
             }
         })
     }
-
     function validarIngreso() {
         const Email = document.getElementById("emailIngreso");
         const Password = document.getElementById("pwdIngreso");
@@ -222,10 +218,6 @@ $(function(){
 
 
 
-
-
-
-
     // FUNCIONES JUNTAS
 
     function mostrarError(elemento) {
@@ -265,20 +257,6 @@ $(function(){
     $("#emailIngreso").on("blur", validarIngreso);
     $("#pwdIngreso").on("input", validarIngreso);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     fotosUsuario();
 
     function fotosUsuario(){
@@ -299,9 +277,7 @@ $(function(){
             var cont = 0;
             respuesta.forEach(listaAnimal);
             function listaAnimal(item, index) {     
-                         
                 const FotosFormulario = document.getElementById("contenedorFormulariosUsuariosFotos");
-
                 if(cont<1){
                     cont ++ ;
                     FotosFormulario.innerHTML +=
@@ -313,8 +289,7 @@ $(function(){
                     '<div class="carousel-item"><img style="width: 100px; height: 300px; margin: auto;" src="data:image/jpg;base64,' +
                     item.imagen +
                     '" alt="' + item.nombre + '" class="d-block w-100 rounded-circle img-thumbnail"></div>';
-                }
-                
+                }  
             }
         })
     }
