@@ -122,6 +122,28 @@ class mdlAnimal{
             AND formato.usuario_Id_formato = usuario.idUsuario 
             AND usuario.ciudad_Id_usuario = ciudad.idCiudad
             AND ciudad.depertamento_Id_Ciudad = departamento.idDepartamento
+            AND animal.idAnimal = formato.animal_Id_Formato
+            GROUP BY animal.idAnimal
+            HAVING COUNT(animal.idAnimal) = 1");
+            $objRespuesta->execute();
+            $ListarAnimal = $objRespuesta->fetchAll(PDO::FETCH_ASSOC);
+            $objRespuesta = null;
+            
+        }catch(Exception $e){
+            $ListarAnimal = $e;
+        }
+    return $ListarAnimal;
+    }
+    public static function mdlListarAnimalUsuario(){
+        $ListarAnimal=[];
+        try{
+            $objConexion = conexion::conectar();
+            $objRespuesta = $objConexion->prepare("SELECT * FROM animal, formato, departamento, raza, especie, usuario, ciudad
+            WHERE raza.idRaza = animal.raza_Id_Animal
+            AND especie.idEspecie = raza.especie_Id_Raza
+            AND formato.usuario_Id_formato = usuario.idUsuario 
+            AND usuario.ciudad_Id_usuario = ciudad.idCiudad
+            AND ciudad.depertamento_Id_Ciudad = departamento.idDepartamento
             AND animal.idAnimal = formato.animal_Id_Formato");
             $objRespuesta->execute();
             $ListarAnimal = $objRespuesta->fetchAll(PDO::FETCH_ASSOC);

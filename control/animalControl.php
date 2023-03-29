@@ -65,7 +65,7 @@ class ctrGuardarDatosAnimal{
 
     public function listarAnimalUpp(){
         if($_SESSION["iniciadoSesion"] !== false){
-            $objRespuesta=mdlAnimal::mdlListarAnimal();
+            $objRespuesta=mdlAnimal::mdlListarAnimalUsuario();
             $respuesta = array();
             foreach ($objRespuesta as $animal) {
                 if ($animal['usuario_Id_formato'] == $_SESSION["usuarioCom"]) {

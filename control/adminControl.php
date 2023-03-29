@@ -17,21 +17,11 @@ class ctrUsuarios{
             $imagen = base64_encode($animal['imagenAnimal']);
             $respuesta[] = array(
                 'imagen' => $imagen,
-                'compRaz' => $animal['idRaza'],  
-                'compEsp' => $animal['idEspecie'], 
-                'idAnimal' => $animal['idAnimal'],
-                'nombreAnimal' => $animal['nombreAnimal'],
-                'sexo' => $animal['sexo'],
-                'edad' => $animal['edad'],
-                'especie' => $animal['nombreEspecie'],
-                'raza' => $animal['nombreRaza'],
-                'descripcion' => $animal['descripcion'],
-                'nombre' => $animal['nombre'],
-                'apellido' => $animal['apellido'],
-                'correo' => $animal['correo'],
-                'tell' => $animal['celular'],
-                'departamento' => $animal['nombreDepartamento'],
-                'ciudad' => $animal['nombreCiudad']
+                'nombreAnimal' => $animal['nombreAnimal'], 
+                'nombre' => $animal['nombre'],  
+                'apellido' => $animal['apellido'], 
+                'documento' => $animal['documento'], 
+                'nomClaseUsuario' => $animal['nomClaseUsuario']
             );
         }
         echo json_encode($respuesta);

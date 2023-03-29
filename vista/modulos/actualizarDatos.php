@@ -11,7 +11,7 @@
                     <button id="btnformulario" type="button" class="btn btn-outline-light text-Secondary">Registrar</button>
                 </div>
             <div class="col">
-                <select class="form-select form-select-lg" id="contenedorCategoria" aria-label="Disabled select example">
+                <select class="form-select form-select-lg" id="contenedorAnimal" aria-label="Disabled select example">
                 </select>
             </div>
                 <div class="col">
@@ -64,13 +64,15 @@
         </div>
 
         <div class="col-sm-12" id="tablaProductosCategoria" >
-            <table class="table" id="tablaProducto">
+            <table class="table" id="tablaDatosUsuarios">
                 <thead class="table-dark">
                 <tr>
                     <th>#</th>
-                    <th>Usuario</th>
                     <th>Animal</th>
-                    <th>Accion</th>
+                    <th>Nombre animal</th>
+                    <th>Usuario</th>
+                    <th>Documento</th>
+                    <th>Tipo</th>
                 </tr>
                 </thead>
                 <tbody>

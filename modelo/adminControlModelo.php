@@ -13,7 +13,8 @@ class mdlDatosTodo{
         AND usuario.ciudad_Id_usuario = ciudad.idCiudad
         AND ciudad.depertamento_Id_Ciudad = departamento.idDepartamento
         AND animal.idAnimal = formato.animal_Id_Formato
-        AND claseUsuario.idClaseUsuario = formato.clase_Id_Usuario");
+        AND claseUsuario.idClaseUsuario = formato.clase_Id_Usuario
+        ORDER BY idAnimal ASC");
         $objRespuesta->execute();
         $respuesta = $objRespuesta->fetchAll(PDO::FETCH_ASSOC);
         $objRespuesta = null;
