@@ -12,6 +12,7 @@
                 </div>
             <div class="col">
                 <select class="form-select form-select-lg" id="contenedorAnimal" aria-label="Disabled select example">
+                    <!-- ARCHIVO -->
                 </select>
             </div>
                 <div class="col">

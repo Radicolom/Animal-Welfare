@@ -2,18 +2,46 @@ $(function(){
 
     var objTablaProducto = null;
 
-    listarDatos()
+    listarDatosAnimales()
 
-    function listarDatos(){
-    //   const objBotones = '';
+    function listarDatosAnimales(){
+        document.getElementById("contenedorAnimal").innerHTML = "";
+
+        const categoriasBuscador = document.getElementById('contenedorAnimal');
+        categoriasBuscador.innerHTML += `<option value='0'>Todos los animales</option>`;
+
         const objData = new FormData();
-    //   const lista = listaCategoria;
+        objData.append("listarDatosAnimal","ok");
+        
+        $.ajax({
+            url: "control/adminControl.php",
+            type: "post",
+            dataType: "json",
+            data: objData,
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function(respuesta){
+            // console.log(respuesta)  
+            if(respuesta != null){
+                respuesta.forEach(ListarProducto);
+                function ListarProducto(item,index){
 
-    //   if (lista != 0){
-    //     objData.append("listaProductoCategoria",lista);
-    //   }else{
-        objData.append("listarDatos","ok");
-    //   }
+                    categoriasBuscador.innerHTML += `<option value='${item.idAnimal}'> ${item.nombreAnimal} </option>`
+
+                }
+            }
+        });
+    listarDatos()
+    }
+
+    function listarDatos(listaCategoria){
+        const objData = new FormData();
+        if(!listaCategoria || listaCategoria == 0){
+            objData.append("listarDatos","ok");
+        }else{
+            objData.append("listarDatosUpp",listaCategoria);
+        }
         $.ajax({
             url: "control/adminControl.php",
             type: "post",
@@ -50,16 +78,23 @@ $(function(){
         });
     }
   
+    
     function cargarTablaProductos(dataSet){
-      if(objTablaProducto != null){
-        $("#tablaDatosUsuarios").dataTable().fnDestroy();
-      }
-  
-      objTablaProducto = $("#tablaDatosUsuarios").DataTable({
-        data:dataSet
-      })
+        if(objTablaProducto != null){
+            $("#tablaDatosUsuarios").dataTable().fnDestroy();
+        }
+    
+        objTablaProducto = $("#tablaDatosUsuarios").DataTable({
+            data:dataSet
+        });
     }
 
+    // BTNS 
+
+    $("#contenedorAnimal").on("change", function(){
+        listaCategoria = $("#contenedorAnimal").val();
+        listarDatos(listaCategoria);
+    })
 
 
 
