@@ -8,7 +8,7 @@
     <center>
         <h1>USUARIO</h1>
     </center>        
-    <div class="card text-white" style="margin: auto; width: 400px; background-color:#b46743a1;">
+    <div class="coloresfor card" style="margin: auto; width: 400px; background-color:#b46743a1;">
         <div class="card-body">
             <div class="mb-3 mt-3">
                     <label for="text" class="form-label">Nombre:</label>
@@ -53,9 +53,9 @@
                     <label for="pwd" class="form-label">Contraseña:</label>
                     <input type="password" class="form-control" id="pwdUsuario" placeholder="Enter password" name="pswd" disabled>
                 </div>
-                <button  type="button" id="cerrarSecionBtn" Style="color:aliceblue;" class="btn">Cerrar sesión</button>
-                <button  type="button" id="editarUsuario" Style="color:aliceblue;" class="btn">Editar</button>
-                <button  type="button" id="guardarEditar" Style="color:aliceblue; display:none;" class="btn">Editar</button>
+                <button  type="button" id="cerrarSecionBtn" Style="color:aliceblue;" class="btn text-dark">Cerrar sesión</button>
+                <button  type="button" id="editarUsuario" Style="color:aliceblue;" class="btn text-dark">Editar</button>
+                <button  type="button" id="guardarEditar" Style="color:aliceblue; display:none;" class="btn text-dark">Editar</button>
             </div>
         </div>
     </div>

@@ -76,7 +76,7 @@ $(function(){
                 '" nombreUsuario="' + item.nombre + ' ' + item.apellido + 
                 '" correo=' + item.correo +
                 ' tell=' + item.tell + 
-                ' direccion=' + item.ciudad + '><div class="card" style="width: 200px; background-color:#ffc273;"><br><img style="width: 170px; height: 170px; margin: auto;" src="data:image/jpg;base64,' +
+                ' direccion=' + item.ciudad + '><div class="colorest card" style="width: 200px; background-color:#ffc273;"><br><img class="imageredond" style="width: 170px; height: 170px; margin: auto;" src="data:image/jpg;base64,' +
                 item.imagen +
                 '" alt="Mi foto"><div class="card-body"><h4 class="card-title">NOMBRE:</h4><h4 class="card-title">' +
                 item.nombreAnimal +

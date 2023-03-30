@@ -20,19 +20,19 @@
             <center>
             <div class="btn-group" id="btnEspecieRaza">
                 <div class="btn-group">
-                    <button type="button" id="selecionarEs" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Especie</button>
+                    <button type="button" id="selecionarEs" class="colorest btn dropdown-toggle" data-bs-toggle="dropdown">Especie</button>
                     <div class="dropdown-menu" id="listaBusquedaAnimalEspecie">
                         <!-- ARCHIVO -->
                     </div>
                 </div>
                 <div class="btn-group" id="btnSelecRaza" style="display: none;">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Raza</button>
+                    <button type="button" class="colorest btn dropdown-toggle" data-bs-toggle="dropdown">Raza</button>
                     <div class="dropdown-menu" id="listaBusquedaAnimalRaza">
                         <!-- ARCHIVO -->
                     </div>
                 </div>
                 <div class="btn-group" id="Recarga">
-                    <button type="button" class="btn btn-primary" id="NoFiltrar">Regresar</button>
+                    <button type="button" class="btn btn-secondary" id="NoFiltrar">Regresar</button>
                 </div>
 
             </div>

@@ -3,7 +3,7 @@
 <br>
 <br>
 <br>
-    <div class="container-fluid p-5 bg-dark text-white text-center">
+    <div class="colorest container-fluid p-5 text-white text-center">
         <div class="row">
                 <div class="col">
                     <button id="btnformulario" type="button" class="btn btn-outline-light text-Secondary">Usuario adopto</button>
@@ -22,19 +22,6 @@
     
     <div class="container sm-12">
         <div class="row">
-            <div class="col-sm-4" id="contenedorFormularioCategoria" style="display: none;">
-
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="nombreClase" placeholder="Ingrese la clase" name="email">
-                    <label for="text">Nombre Producto</label>
-                </div>
-    
-                <div class="btn-group">
-                    <button type="button" id="btnGuardarCategoria" class="btn btn-dark">Guardar</button>
-                    <button type="button form-check-input" id="btnCancelarCategoria" class="btn btn-secondary">Cancelar</button> 
-                </div>
-            </div>
-
             <div class="col-sm-12" id="tablaDatosAnimalUsuario" >
                 <table class="table" id="tablaDatosUsuarios">
                     <thead class="table-dark">
@@ -47,13 +34,14 @@
                         <th>Tipo</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="coloresfor">
 
                     </tbody>
                 </table> 
             </div>
 
-            <div class="col-sm-4" id="contenedorFormularioAdopto" style="display: none;">
+            <div class="coloresfor col-sm-4" id="contenedorFormularioAdopto" style="display: none;">
+                <br>
                 <div class="form-floating">
                     <select class="form-select form-select-lg" id="selectorAnimal" aria-label="Disabled select example">
                     <!-- Archivo -->
@@ -69,7 +57,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <button type="button" id="btnGuardarAdopto" class="btn btn-dark">Guardar</button>
+                    <button type="button" id="btnGuardarAdopto" class="btn btn-outline-success">Guardar</button>
                     <button type="button form-check-input" id="btnCancelar" class="btn btn-secondary">Cancelar</button>
                         
                 </div>

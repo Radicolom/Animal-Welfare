@@ -6,7 +6,7 @@
             <center>
                 <h1>LOGIN</h1>
             </center>        
-            <div class="card text-white" style="margin: auto; width: 400px; background-color:#b46743a1;">
+            <div class="fondoFormulario2 card text-white" style="margin: auto; width: 400px;">
                 <div class="card-body">
                     <form id="formularioIngreso">
                         <div class="mb-3 mt-3">
@@ -42,7 +42,7 @@
             <center>
                 <h1>REGISTRO</h1>
             </center>
-            <div class="card text-white" style="margin: auto; width: 400px; background-color:#b46743a1;" >
+            <div class="fondoFormulario2 card text-white" style="margin: auto; width: 400px; background-color:#b46743a1;" >
                 <div class="card-body">
                     <form id="formularioRegistro">
                         <div class="mb-3 mt-3">
@@ -105,7 +105,7 @@
                             <span style="color:red; display:none;">Las contraseñas no conciden.</span>
                         </div>
              
-                        <button type="submit" id="BtnRegistroUsuario" class="btn btn-primary">Registrar</button>
+                        <button type="submit" id="BtnRegistroUsuario" class="btn btn-outline-dark">Registrar</button>
                     </form>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-sm fixed-top" id="imagenTitulo">
+<nav class="colorest navbar navbar-expand-sm fixed-top" id="imagenTitulo">
     <div class="container-fluid mb-1 text-center" >
         <div class="col" >
                 <H1>

@@ -117,7 +117,7 @@ $(function(){
                 '" ciudad="' + item.ciudad + 
                 '" departamento="' + item.departamento + 
                 '" descripcion="' + item.descripcion + 
-                '"><div class="card" style="width: 150px; background-color:#ffc273;"><br><img style="width: 100px; height: 100px; margin: auto;" src="data:image/jpg;base64,' +
+                '"><div class="colorest imageredond card" style="width: 150px; background-color:#ffc273;"><br><img class="imageredond" style="width: 100px; height: 100px; margin: auto;" src="data:image/jpg;base64,' +
                 item.imagen +
                 '" alt="Mi foto"><div class="card-body"><h4 class="card-title">NOMBRE:</h4><h4 class="card-title">' +
                 item.nombreAnimal +
