@@ -41,7 +41,7 @@ class mdlUsuario{
             WHERE NOT EXISTS (SELECT nombreDepartamento FROM departamento -- Se valida si existe el dato 
             WHERE LOWER(nombreDepartamento) = LOWER(:departamento)  -- Se cambian los valores a minusculas
             AND nombreDepartamento REGEXP '^[^0-9]*$') -- Se despejan los caracteres especiales
-            AND :departamento IS NOT NULL;"); // El dato no puede ser nulo
+            AND :departamento IS NOT NULL"); // El dato no puede ser nulo
             $objRespuesta->bindparam(":departamento",$departamentoRegistro);
             $objRespuesta->execute();
             $objRespuesta = null;
@@ -73,7 +73,7 @@ class mdlUsuario{
             WHERE NOT EXISTS (SELECT nombre, apellido, documento, correo, contrasena, celular, rol_Id_Usuario, ciudad_Id_usuario  FROM usuario 
             WHERE LOWER(documento) = LOWER( :documento)
             AND LOWER(correo) = LOWER(:correo)
-            AND LOWER(contrasena) = LOWER(:contrasena));"); // El dato no puede ser nulo
+            AND LOWER(contrasena) = LOWER(:contrasena))"); // El dato no puede ser nulo
             $objRespuesta->bindparam(":nombre",$nombreRegistro);
             $objRespuesta->bindparam(":apellido",$apellidoRegistro);
             $objRespuesta->bindparam(":documento",$documentoRegistro);

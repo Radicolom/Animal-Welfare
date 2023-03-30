@@ -10,8 +10,7 @@ ini_set('session.gc_maxlifetime', $maxLifetime);
 session_start();
 
 class ctrUsuarios{
-
-    public function ctrListarDatosUsuarios(){
+    public function ctrListarDatosAnimalUsuarios(){
         $objRespuesta=mdlDatosTodo::mdlListarDatosUsuarios();
         $respuesta = array();
         foreach ($objRespuesta as $animal) {
@@ -27,7 +26,7 @@ class ctrUsuarios{
         }
         echo json_encode($respuesta);
     }
-    public function listarAnimalUpp(){
+    public function ctrListarAnimalUpp(){
         $objRespuesta=mdlDatosTodo::mdlListarDatosAnimalUpp($this->idAnimal);
         $respuesta = array();
         foreach ($objRespuesta as $animal) {
@@ -43,8 +42,8 @@ class ctrUsuarios{
         }
         echo json_encode($respuesta);
     }
-    public function listarDatosAnimal(){
-            $objRespuesta=mdlAnimal::mdlListarAnimalUsuario();
+    public function ctrListarDatosAnimal(){
+            $objRespuesta=mdlDatosTodo::mdlListarAnimal();
             $respuesta = array();
             foreach ($objRespuesta as $animal) {
                 if ($_SESSION["admin"] === "esADMIN") {
@@ -52,39 +51,45 @@ class ctrUsuarios{
                     $respuesta[] = array(
                         'imagen' => $imagen,
                         'idAnimal' => $animal['idAnimal'],
-                        'nombreAnimal' => $animal['nombreAnimal'],
-                        'sexo' => $animal['sexo'],
-                        'edad' => $animal['edad'],
-                        'especie' => $animal['nombreEspecie'],
-                        'raza' => $animal['nombreRaza'],
-                        'ciudad' => $animal['nombreCiudad'],
-                        'departamento' => $animal['nombreDepartamento'],
-                        'descripcion' => $animal['descripcion']
+                        'nombreAnimal' => $animal['nombreAnimal']
                     );
                 }
 
             }
             echo json_encode($respuesta);
     }
+    public function ctrListarDatosUsuario(){
+        $objRespuesta=mdlDatosTodo::mdlListarUsuarios();
+        echo json_encode($objRespuesta);
+    }
+    public function ctrGuardarAdoptante(){
+        $objRespuesta=mdlGuardar::mdlGuardarAdoptante($this->idAnimalAdopto,$this->idUsuarioAdopto);
+        echo json_encode($objRespuesta);
+    }
 }
-
 if(isset($_POST["listarDatos"]) && $_POST["listarDatos"] == "ok"){
     $objRespuesta = new ctrUsuarios();
-    $objRespuesta->ctrListarDatosUsuarios();
+    $objRespuesta->ctrListarDatosAnimalUsuarios();
 }
-
 if(isset($_POST["listarDatosUpp"]) && $_POST["listarDatosUpp"] != ""){
     $objRespuesta = new ctrUsuarios();
     $objRespuesta-> idAnimal =  $_POST["listarDatosUpp"];
-    $objRespuesta->listarAnimalUpp();
+    $objRespuesta->ctrListarAnimalUpp();
 }
-
 if(isset($_POST["listarDatosAnimal"]) && $_POST["listarDatosAnimal"] == "ok"){
     $objRespuesta = new ctrUsuarios();
-    $objRespuesta->listarDatosAnimal();
+    $objRespuesta->ctrListarDatosAnimal();
 }
-
-
+if(isset($_POST["listarDatosUsuarioLista"]) && $_POST["listarDatosUsuarioLista"] == "ok"){
+    $objRespuesta = new ctrUsuarios();
+    $objRespuesta->ctrListarDatosUsuario();
+}
+if(isset($_POST["idAnimalAdopto"],$_POST["idUsuarioAdopto"])){
+    $objRespuesta = new ctrUsuarios();
+    $objRespuesta-> idAnimalAdopto =  $_POST["idAnimalAdopto"];
+    $objRespuesta-> idUsuarioAdopto =  $_POST["idUsuarioAdopto"];
+    $objRespuesta->ctrGuardarAdoptante();
+}
 
 
 

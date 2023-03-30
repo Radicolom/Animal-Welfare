@@ -421,10 +421,10 @@ $(function(){
                 var lineas1 = doc.splitTextToSize(parrafo1, 7.5);                
                 doc.text(0.5, 6, lineas1, { unicode: 'UTF-8' });
                 
-                // doc.save("Animal_welfare.pdf");
-                var nuevaUr = new Blob([doc.output()], {type: 'application/pdf'});
-                var urlArchivo = window.URL.createObjectURL(nuevaUr);
-                window.open(urlArchivo, '_blank');
+                doc.save("Animal_welfare.pdf");
+                // var nuevaUr = new Blob([doc.output()], {type: 'application/pdf'});
+                // var urlArchivo = window.URL.createObjectURL(nuevaUr);
+                // window.open(urlArchivo, '_blank');
 
 
             }
