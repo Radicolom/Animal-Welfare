@@ -66,11 +66,6 @@
                     <label for="comment">Description:</label>
                     <textarea class="form-control" rows="5" name="text" id="descripcionRegistrar"></textarea>
                     
-                    <div class="form-check mb-3">
-                        <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                        </label>
-                    </div>
                     <button type="button" class="btn btn-primary" id="btnRegistrarAnimal" value="0">Registrar peludito🙈</button>
                 </div>
             </div>
