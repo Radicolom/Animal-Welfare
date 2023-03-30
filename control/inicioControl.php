@@ -7,10 +7,10 @@ $maxLifetime = 1800;
 ini_set('session.gc_maxlifetime', $maxLifetime); // Configura el tiempo máximo de vida de las sesiones
 
 session_start();
-$iniciadoSesion = false;
+$_SESSION["iniciadoSesion"] = false;
 
 class ctrUsuario{
-    public $objRespuesta;
+    public $objRespuesta; 
     public $objRes;
 
     public function ctrValidarUsuario(){
