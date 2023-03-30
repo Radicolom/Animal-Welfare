@@ -92,6 +92,62 @@ class mdlUsuario{
     return $mensaje;
     }
 
+    public static function mdlEditarUsuario($nombreAct,$apellidoAct,$documentoAct,$telefonoAct,$correoAct,$contrasenaAct,$ciudadAct,$departamentoAct,$IdUsuarioAct){
+        $guardarUsuario="";
+        $conexion = Conexion::conectar(); // Se crea la conexion 
+        try{
+            $objRespuesta=$conexion->prepare("INSERT INTO departamento (nombreDepartamento) SELECT :departamento -- Se envia el dato a incertar
+            WHERE NOT EXISTS (SELECT nombreDepartamento FROM departamento -- Se valida si existe el dato 
+            WHERE LOWER(nombreDepartamento) = LOWER(:departamento)  -- Se cambian los valores a minusculas
+            AND nombreDepartamento REGEXP '^[^0-9]*$') -- Se despejan los caracteres especiales
+            AND :departamento IS NOT NULL;"); // El dato no puede ser nulo
+            $objRespuesta->bindparam(":departamento",$departamentoAct);
+            $objRespuesta->execute();
+            $objRespuesta = null;
+        }catch(Exception $e){
+            $objRespuesta = $e;
+            return $objRespuesta;
+        }
+        try{
+            $objRespuesta=$conexion->prepare("INSERT INTO ciudad (nombreCiudad, depertamento_Id_Ciudad) SELECT :ciudadRegistro, (SELECT idDepartamento -- Se selecciona el id de la tabla de referencia
+            FROM departamento
+            WHERE LOWER(nombreDepartamento) = LOWER(:departamentoRegistro)) -- cerramos la busqueda del id
+            WHERE NOT EXISTS (SELECT nombreCiudad FROM ciudad -- Se valida si existe el dato
+            WHERE LOWER(nombreCiudad) = LOWER(:ciudadRegistro) -- Se cambian los valores a minusculas
+            AND  :ciudadRegistro REGEXP '^[^0-9]*$') -- Se despejan los caracteres especiales
+            AND  :ciudadRegistro IS NOT NULL"); // El dato no puede ser nulo
+            $objRespuesta->bindparam(":ciudadRegistro",$ciudadAct);
+            $objRespuesta->bindparam(":departamentoRegistro",$departamentoAct);
+            $objRespuesta->execute();
+            $objRespuesta = null;
+        }catch(Exception $e){
+            $objRespuesta = $e;
+            return $objRespuesta;
+        }
+        try{
+            $objRespuesta=$conexion->prepare("UPDATE usuario SET nombre = :nombre, apellido = :apellido, documento = :documento, correo = :correo, 
+            contrasena = :contrasena, celular = :celular, ciudad_Id_usuario = (SELECT idCiudad
+            FROM ciudad
+            WHERE LOWER(nombreCiudad) = LOWER(:ciudadRegistro))
+            WHERE usuario.idUsuario = :idUsuario"); // El dato no puede ser nulo
+            $objRespuesta->bindparam(":nombre",$nombreAct);
+            $objRespuesta->bindparam(":apellido",$apellidoAct);
+            $objRespuesta->bindparam(":documento",$documentoAct);
+            $objRespuesta->bindparam(":celular",$telefonoAct);
+            $objRespuesta->bindparam(":correo",$correoAct);
+            $objRespuesta->bindparam(":contrasena",$contrasenaAct);
+            $objRespuesta->bindparam(":ciudadRegistro",$ciudadAct);
+            $objRespuesta->bindparam(":idUsuario",$IdUsuarioAct);
+        if ($objRespuesta->execute()){
+            $mensaje= "ok";
+        }else{
+            $mensaje= "erro al editar datos";
+        }
+        }catch(Exception $e){
+            $mensaje = $e;
+        }
+    return $mensaje;
+    }
 }
 
 // ANIMAL

@@ -55,6 +55,7 @@
                 </div>
                 <button  type="button" id="cerrarSecionBtn" Style="color:aliceblue;" class="btn">Cerrar sesión</button>
                 <button  type="button" id="editarUsuario" Style="color:aliceblue;" class="btn">Editar</button>
+                <button  type="button" id="guardarEditar" Style="color:aliceblue; display:none;" class="btn">Editar</button>
             </div>
         </div>
     </div>

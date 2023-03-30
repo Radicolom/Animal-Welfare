@@ -11,6 +11,7 @@ $iniciadoSesion = false;
 
 class ctrUsuario{
     public $objRespuesta;
+    public $objRes;
 
     public function ctrValidarUsuario(){
         $objRespuesta = mdlUsuario::mdlValidarUsuario($this->correoUsuario,$this->passwordUsuario);
@@ -45,6 +46,23 @@ class ctrUsuario{
         echo json_encode("ok");
     }
 
+    public function ctrEditarUsuario(){
+        $objRespuesta = mdlUsuario::mdlEditarUsuario($this->nombreAct,$this->apellidoAct,$this->documentoAct,$this->telefonoAct,$this->correoAct,$this->contrasenaAct,$this->ciudadAct,$this->departamentoAct,$this->IdUsuarioAct);
+        $objRes = mdlUsuario::mdlValidarUsuario($this->correoAct,$this->contrasenaAct);
+        if($objRes){
+            $_SESSION["iniciadoSesion"] = true;
+            foreach ($objRes as $respuesta) {
+                $_SESSION["usuarioCom"] = $respuesta['idUsuario'];
+                $_SESSION["usuarioDad"] = $respuesta;
+                $_SESSION["primerInicio"] = 1;
+                if ($respuesta["rol_Id_Usuario"] == 2) {
+                    $_SESSION["admin"] = "esADMIN";  
+                }
+                break; // detener el bucle después de encontrar el primer idUsuario
+            }
+        }
+        echo json_encode($objRespuesta);
+    }
 }
 
 if(isset($_POST["usuarioSalir"]) && $_POST["usuarioSalir"] == "ok"){
@@ -141,5 +159,19 @@ if(isset($_POST["usarioCua"]) && $_POST["usarioCua"] == "ok"){
 if(isset($_POST["primerIni"]) && $_POST["primerIni"] == "ok"){
     $objAnimal = new ctrValidar();
     $objAnimal->ctrUsucarioIni();
+}
+
+if(isset($_POST["actualizarNombre"],$_POST["actualizarApellido"],$_POST["actualizarDocumento"],$_POST["actualizarDepartamento"],$_POST["actualizarCiudad"],$_POST["actualizarTelefono"],$_POST["actualizarCorreo"],$_POST["actualizarContrasena"])){
+    $objUsuario = new ctrUsuario();
+    $objUsuario->nombreAct = $_POST["actualizarNombre"];
+    $objUsuario->apellidoAct = $_POST["actualizarApellido"];
+    $objUsuario->documentoAct = $_POST["actualizarDocumento"];
+    $objUsuario->telefonoAct = $_POST["actualizarTelefono"];
+    $objUsuario->correoAct = $_POST["actualizarCorreo"];
+    $objUsuario->contrasenaAct = $_POST["actualizarContrasena"];
+    $objUsuario->ciudadAct = $_POST["actualizarCiudad"];
+    $objUsuario->departamentoAct = $_POST["actualizarDepartamento"];
+    $objUsuario->IdUsuarioAct = $_SESSION["usuarioCom"];
+    $objUsuario->ctrEditarUsuario();
 }
 ?>
