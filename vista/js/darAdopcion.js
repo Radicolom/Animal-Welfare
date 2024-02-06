@@ -161,7 +161,7 @@ $(function(){
     function guardarAnimal(){
         const nombreRegistro = $("#nombreAnimal").val();
         const imagenAnimalRegistro = $("#imagenAnimal")[0].files[0];
-        const sexoRegistro = $("#selectSexo option:selected").text();;
+        const sexoRegistro = $("#selectSexo option:selected").text();
         const edadRegistro = $("#selectEdadAnimal").val() + " " + $("#selectTiempo option:selected").text();
         const especieRegistro = $("#especieRegistro").val();
         const razaRegistro = $("#razaRegistro").val();
